@@ -312,7 +312,7 @@ class CryptoTrader:
         # 反水一次设置
         first_frame = ttk.Frame(amount_frame)
         first_frame.pack(side=tk.LEFT, padx=2)
-        ttk.Label(first_frame, text="反水一次(%):").pack(side=tk.LEFT)
+        ttk.Label(first_frame, text="反水一(%):").pack(side=tk.LEFT)
         self.first_rebound_entry = ttk.Entry(first_frame, width=4)
         self.first_rebound_entry.pack(side=tk.LEFT)
         self.first_rebound_entry.insert(0, "220")
@@ -320,7 +320,7 @@ class CryptoTrader:
         # 反水N次设置
         n_frame = ttk.Frame(amount_frame)
         n_frame.pack(side=tk.LEFT, padx=2)
-        ttk.Label(n_frame, text="反水N次(%):").pack(side=tk.LEFT)
+        ttk.Label(n_frame, text="反水N(%):").pack(side=tk.LEFT)
         self.n_rebound_entry = ttk.Entry(n_frame, width=4)
         self.n_rebound_entry.pack(side=tk.LEFT)
         self.n_rebound_entry.insert(0, "135")
@@ -363,7 +363,7 @@ class CryptoTrader:
         for i in range(8):
             settings_container.grid_columnconfigure(i, weight=1)
         # 设置窗口大小和位置
-        window_width = 700
+        window_width = 650
         window_height = 900
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
@@ -377,7 +377,7 @@ class CryptoTrader:
         ttk.Label(url_frame, text="网站地址:", font=('Arial', 10)).grid(row=0, column=0, padx=5, pady=5)
         
         # 创建下拉列和输入框组合控件
-        self.url_entry = ttk.Combobox(url_frame, width=62)
+        self.url_entry = ttk.Combobox(url_frame, width=52)
         self.url_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew")
         
         # 从配置文件加载历史记录
@@ -415,7 +415,7 @@ class CryptoTrader:
         self.update_amount_button['state'] = 'disabled'  # 初始禁用
 
         # 添加价格按钮
-        prices = ['0.53', '0.54', '0.55']
+        prices = ['0.54', '0.55']
         for price in prices:
             btn = ttk.Button(
                 button_frame, 
