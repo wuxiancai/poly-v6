@@ -5,49 +5,148 @@ XPATH配置文件
 """
 
 class XPathConfig:
-    # 登录相关
-    LOGIN_BUTTON = '//*[@id="__pm_viewport"]/nav[1]/div[1]/div[3]/div/nav/div/ul/div[1]/div/button'
+    # 1.登录相关，长期有效
+    LOGIN_BUTTON = [
+        '//button[contains(text(), "Log In")]',
+        '//button[@class="c-gBrBnR c-gBrBnR-gDWzxt-variant-primary c-gBrBnR-bxvuTL-fontWeight-medium c-gBrBnR-dRRWyf-fontSize-md c-gBrBnR-gFoOfa-cv c-gBrBnR-ikLDqfK-css"]'
+        
+    ]
     
-    # 交易按钮
-    SELL_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[1]/div/div/div[2]' #可能需要改动
-    BUY_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[1]/div/div/div[1]' #可能需要改动
-    BUY_YES_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[2]/div[1]/div[2]/div/div[1]/div' #可能需要改动
-    BUY_NO_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div' #可能需要改动
-    SELL_YES_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[2]/div[1]/div[2]/div[1]/div[1]/div' #可能需要改动
-    SELL_NO_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div' #可能需要改动
-    BUY_CONFIRM_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[2]/div[4]/button' #可能需要改动,买卖按钮是一样的
-    SELL_PROFIT_BUTTON = '//*[@id="column-wrapper"]/div/div/div/div[1]/div/div[2]/div[4]/button' #可能需要改动，买卖按钮是一样的
+    # 2.Buy按钮长期有效
+    BUY_BUTTON = [
+        '//button[(text()="Buy")]', 
+        '/html/body/div[1]/div[2]/div/div/div/div/div/div[1]/div[1]/div/div/button[1]'
+    ]
+
+    # 3.Buy Yes 按钮长期有效
+    BUY_YES_BUTTON = [
+        '//button[.//span[contains(text(), "Up")] and .//span[contains(text(), "¢")]]',
+        '/html/body/div[1]/div[2]/div/div/div/div/div/div[1]/div[2]/div[1]/span[1]/button'
+    ]
+
+    # 4.Buy No 按钮长期有效
+    BUY_NO_BUTTON = [
+        '//button[.//span[contains(text(), "Down")] and .//span[contains(text(), "¢")]]',
+        '/html/body/div[1]/div[2]/div/div/div/div/div/div[1]/div[2]/div[1]/span[2]/button'
+    ]
+
+    # 5.Sell Yes 按钮长期有效
+    SELL_YES_BUTTON = [
+        '//button[.//span[contains(text(), "Up")] and .//span[contains(text(), "¢")]]',
+        '/html/body/div[1]/div[2]/div/div/div/div/div/div[1]/div[2]/div[1]/span[1]/button'
+       
+    ]
+
+    # 6.Sell No 按钮长期有效
+    SELL_NO_BUTTON = [
+        '//button[.//span[contains(text(), "Down")] and .//span[contains(text(), "¢")]]',
+        
+    ]
+
+    # 7.Buy-确认买入按钮
+    BUY_CONFIRM_BUTTON = [
+        '//button[@class="c-bDcLpV c-bDcLpV-fLyPyt-color-blue c-bDcLpV-ileGDsu-css"]'
+        ]
+
+    # 8.Sell-卖出按钮
+    SELL_CONFIRM_BUTTON = [
+        '//button[@class="c-bDcLpV c-bDcLpV-fLyPyt-color-blue c-bDcLpV-ileGDsu-css"]',
+        '/html/body/div[1]/div[2]/div/div/div/div/div/div[1]/div[3]/div[2]/div/span/button'
+        ]
+
+    # 9.Amount输入框长期有效
+    AMOUNT_INPUT = [
+        '//input[@id="market-order-amount-input"]',
+        '//p[text()="Amount"]/ancestor::div//input[@placeholder="$0"]',
+        '/html/body/div[1]/div[2]/div/div/div/div/div/div[1]/div[3]/div/div/div/div/div[1]/div/div[1]/div[2]/div/div/input'
+    ]
+
+    # 10.Position-Up标签长期有效
+    POSITION_UP_LABEL = [
+        '//div[@class="c-PJLV c-PJLV-igOOgQP-css"]//div[text()="Up"]',
+        '//div[@class="c-dhzjXW c-chKWaB c-chKWaB-eVTycx-color-green c-dhzjXW-ibxvuTL-css" and text()="Up"]'
+    ]
+
+    # 11.Position-Down标签长期有效
+    POSITION_DOWN_LABEL = [
+        '//div[@class="c-PJLV c-PJLV-igOOgQP-css"]//div[text()="Down"]',
+        '//div[@class="c-dhzjXW c-chKWaB c-chKWaB-kNNGp-color-red c-dhzjXW-ibxvuTL-css" and text()="Down"]'
+    ]
+
+    # 12.Position-Yes值长期有效
+    POSITION_YES_VALUE = [
+        '(//span[@class="c-PJLV c-dnafHo"])[1]',
+        '/html/body/div[1]/div[2]/div/div/main/div/div/div/div/div/div[3]/div/div[2]/div/div[2]/table/tbody/tr[1]/td[4]/span[2]',
+        '//*[@id="event-detail-container"]/div/div[3]/div/div[2]/div/div[2]/table/tbody/tr[1]/td[4]/span[2]'
+    ]
+
+    # 13.Position-No值长期有效
+    POSITION_NO_VALUE = [
+        '(//span[@class="c-PJLV c-dnafHo"])[2]',
+        '/html/body/div[1]/div[2]/div/div/main/div/div/div/div/div/div[3]/div/div[2]/div/div[2]/table/tbody/tr[2]/td[4]/span[2]'
+    ]
+
+    # 14.Position-Sell按钮长期有效
+    POSITION_SELL_BUTTON = [
+        '//button[@class="c-gBrBnR c-gBrBnR-iifsICY-css"]',
+        '//td//div//button[text()="Sell"]', 
+    ]
+
+    # 15.Position-Sell Yes按钮 长期有效
+    POSITION_SELL_YES_BUTTON = [
+        '(//button[@class="c-gBrBnR c-gBrBnR-iifsICY-css"])[1]',
+        '(//td//div//button[text()="Sell"])[1]'
+        ]
+
+    # 16.Position-Sell No按钮长期有效
+    POSITION_SELL_NO_BUTTON = [
+        '(//button[@class="c-gBrBnR c-gBrBnR-iifsICY-css"])[2]',
+        '(//td//div//button[text()="Sell"])[2]'
+        ]
+
+    # 17.Portfolio值长期有效
+    PORTFOLIO_VALUE = [
+        '//a[@href="/portfolio"]//div//p[contains(text(), "$")]',
+        '//button[@href="/portfolio"]//p[contains(text(), "$")]'
+    ]
+
+    # 18.Cash值长期有效
+    CASH_VALUE = [
+        '//a[@href="/portfolio"]//button//p[contains(text(), "$")]',
+        '//button[.//p[text()="Cash"]]/p[contains(text(), "$")]'
+    ]
+
+    # 19.History-交易记录长期有效
+    HISTORY = [
+        '(//div[@class="PJLV PJLV-ihovmxi-css"])[1]',
+        '(//div[@class="PJLV PJLV-ihovmxi-css"]//p)[1]', 
+        '/html/body/div[1]/div[2]/div/div/main/div/div/div/div/div/div[3]/div/div[5]/div/div[2]/div/p'  
+    ]
     
-    # 金额输入
-    AMOUNT_INPUT = '//div[@class="c-dhzjXW c-dhzjXW-idAwKFA-css"]//input' #长期有效，可能需要改动
+    # 20. login_with_google_button长期有效
+    LOGIN_WITH_GOOGLE_BUTTON = [
+        '//*[@id="authentication-modal"]/div/div[2]/div/div/div/div/button'
+    ]
     
-    # Position相关
-    POSITION_YES_LABEL  = '//div[@class="c-dhzjXW c-chKWaB c-chKWaB-eVTycx-color-green c-dhzjXW-ibxvuTL-css" and text()="Yes"]' #长期有效
-    POSITION_NO_LABEL = '//div[@class="c-dhzjXW c-chKWaB c-chKWaB-kNNGp-color-red c-dhzjXW-ibxvuTL-css" and text()="No"]' #长期有效
-    POSITION_SELL_BUTTON = '//button[@class="c-gBrBnR c-gBrBnR-iifsICY-css"]' #长期有效
-    POSITION_SELL_YES_BUTTON = '(//button[@class="c-gBrBnR c-gBrBnR-iifsICY-css"])[1]' #长期有效,不需要改动
-    POSITION_SELL_NO_BUTTON = '(//button[@class="c-gBrBnR c-gBrBnR-iifsICY-css"])[2]' #长期有效,不需要改动
-    
-    # 价格相关
-    YES_PRICE = '(//span[@class="c-bjtUDd c-bjtUDd-ijxkYfH-css"])[1]' #长期有效,不需要改动
-    NO_PRICE = '(//span[@class="c-bjtUDd c-bjtUDd-ijxkYfH-css"])[2]' #长期有效,不需要改动
-    PORTFOLIO_VALUE = '(//span[@class="c-PJLV c-jaFKlk c-PJLV-ibdakYG-css"])[1]' #长期有效,不需要改动
-    CASH_VALUE = '(//span[@class="c-PJLV c-jaFKlk c-PJLV-ibdakYG-css"])[2]' #长期有效,不需要改动
+    # 21.accept_button长期有效
+    ACCEPT_BUTTON = [
+        '//button[contains(text(), "Accept")]',
+        '//button[contains(text(), "I Accept")]'
+    ]    
 
-     # Website按钮相关
-    WEBSITE_BUY = BUY_BUTTON
-    WEBSITE_SELL = SELL_BUTTON
-    WEBSITE_BUY_CONFIRM = BUY_CONFIRM_BUTTON
-    WEBSITE_SET_EXPIRATION = "//button[contains(text(), 'Set Expiration')]"
-    WEBSITE_MODAL_BUY = "//div[contains(@class, 'modal')]//button[contains(text(), 'Buy')]"
+    # 22.定位 SPREAD 的 XPATH
+    SPREAD = [
+        '(//span[@class="c-ggujGL"])[2]'
+    ]
 
-    # 卖出相关
-    SELL_POSITION_BUTTON = "//div[contains(text(), '{}')]/..//button[contains(text(), '卖出')]"
-    CONFIRM_SELL_BUTTON = "//button[contains(text(), '确认卖出')]"
+    # 23.搜索框长期有效
+    SEARCH_INPUT = [
+        '//input[@id="markets-grid-search-input"]',
+        '/html/body/div[1]/div[2]/div/div/main/div/div/div[3]/div/div/div/div[1]/div[2]/div[2]/input'
+    ] 
 
-    # 价格监控相关
-    PRICE_BUTTON = "//button[contains(@class, '{}')]"  # 将通过format填充yes/no
-
-    # 买入yes/no时通过判断yes/no的值来判断是否买入成功
-    POSITION_YES_VALUE = '//*[@id="event-detail-container"]/div/div[2]/div/div[2]/div/div[2]/table/tbody/tr[1]/td[4]/span[2]'
-    POSITION_NO_VALUE = '//*[@id="event-detail-container"]/div/div[2]/div/div[2]/div/div[2]/table/tbody/tr[2]/td[4]/span[2]'
+    # 24.search_confirm_button长期有效
+    SEARCH_CONFIRM_BUTTON = [
+        '//p[contains(text(), "Up or Down on")]', 
+        '//a//p[contains(text(), "Up or Down on")]' 
+    ]

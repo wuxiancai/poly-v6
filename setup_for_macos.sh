@@ -51,9 +51,9 @@ brew update
 echo "安装 Python 3.9..."
 brew install python@3.9 --force
 brew link --force --overwrite python@3.9
-
-# 安装 python-tk@3.9 (自动模式)
+echo "安装 python-tk@3.9 (自动模式)"
 brew install python-tk@3.9 --force
+brew install wget
 
 # 创建虚拟环境
 echo "创建虚拟环境..."
@@ -68,6 +68,12 @@ python3.9 -m pip install --upgrade pip
 echo "安装依赖..."
 pip3 install --no-cache-dir selenium
 pip3 install --no-cache-dir pyautogui
+pip3 install --no-cache-dir screeninfo
+pip3 install --no-cache-dir requests
+# pip3 install --no-cache-dir pytesseract
+# pip3 install --no-cache-dir opencv-python-headless  # 安装headless版本，通常更稳定
+
+
 
 # 配置 Python 环境变量 (避免重复添加)
 echo "配置环境变量..."
@@ -113,11 +119,16 @@ chmod +x start_chrome.sh
 # 创建自动启动脚本
 
 cat > run_trader.sh << 'EOL'
+#! /bin/bash
+
+# 打印接收到的参数，用于调试
+echo "run_trader.sh received args: $@"
+
 # 激活虚拟环境
 source venv/bin/activate
 
 # 运行交易程序
-python3 crypto_trader.py
+exec python3 -u crypto_trader.py "$@"
 EOL
 
 chmod +x run_trader.sh
